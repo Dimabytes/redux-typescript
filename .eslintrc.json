@@ -1,0 +1,149 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": [
+                    "src"
+                ],
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        },
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts",
+                ".tsx"
+            ]
+        }
+    },
+    "extends": [
+        "airbnb",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:sonarjs/recommended",
+        "plugin:prettier/recommended",
+        "prettier/@typescript-eslint",
+        "prettier/react"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "react-hooks",
+        "jsx-a11y",
+        "sonarjs"
+    ],
+    "rules": {
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "object-curly-newline": 0,
+        "operator-linebreak": 0,
+        "no-unused-expressions": [
+            "error",
+            {
+                "allowShortCircuit": true,
+                "allowTernary": true
+            }
+        ],
+        "max-len": [
+            "warn",
+            {
+                "code": 120,
+                "ignoreStrings": true
+            }
+        ],
+        "max-lines": [
+            "warn",
+            300
+        ],
+        "arrow-parens": 0,
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "react/jsx-filename-extension": 0,
+        "comma-dangle": 0,
+        "jsx-a11y/label-has-associated-control": 0,
+        "react/jsx-props-no-spreading": 0,
+        "react/require-default-props": 0,
+        "react/jsx-wrap-multilines": 0,
+        "import/no-deprecated": "warn",
+        "import/prefer-default-export": 0,
+        "react/forbid-prop-types": 0,
+        "react/state-in-constructor": 0,
+        "react/static-property-placement": 0,
+        "lines-between-class-members": [
+            "error",
+            "always",
+            {
+                "exceptAfterSingleLine": true
+            }
+        ],
+        "import/no-extraneous-dependencies": 1,
+        "react/display-name": 0,
+        "jsx-a11y/mouse-events-have-key-events": 0,
+        "react/jsx-one-expression-per-line": 0,
+        "linebreak-style": 0,
+        "react/no-did-update-set-state": 0,
+        "sonarjs/no-small-switch": 0,
+        "consistent-return": 0,
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "@typescript-eslint/no-misused-promises": [
+            "error",
+            {
+                "checksVoidReturn": false
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ],
+            "rules": {
+                "@typescript-eslint/no-empty-interface": 0
+            }
+        },
+        {
+            "files": [
+                "stories.js"
+            ],
+            "rules": {
+                "import/no-extraneous-dependencies": "off",
+                "import/prefer-default-export": "off",
+                "no-restricted-imports": "off"
+            }
+        }
+    ]
+}
