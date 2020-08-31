@@ -14,7 +14,7 @@ const getBaseRequestOptions = (): RequestInit => {
   };
 };
 
-export function baseGet<T>(url: string, params: AnyObject): Promise<T> {
+export function baseGet<T>(url: string, params?: AnyObject): Promise<T> {
   const requestOptions = {
     ...getBaseRequestOptions(),
     method: 'GET'

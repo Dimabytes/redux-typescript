@@ -1,6 +1,7 @@
 import {AnyObject} from 'models/common/AnyObject';
+import {BaseServerArray, WithId} from '../../models/common/serverArray';
 
-export function buildUrl(url: string, params: AnyObject): string {
+export function buildUrl(url: string, params?: AnyObject): string {
   if (!params || Object.keys(params).length === 0) {
     return url;
   }
@@ -27,3 +28,6 @@ export function handleResponse<T>(response: Response): Promise<T> {
     return json;
   });
 }
+
+export const formatServerArray = <T>(serverArray: BaseServerArray<T>): WithId<T>[] =>
+  Object.keys(serverArray).map(key => ({...serverArray[key], id: key}));

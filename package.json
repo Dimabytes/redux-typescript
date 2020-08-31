@@ -37,6 +37,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://redux-todo-e501d.firebaseio.com",
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",

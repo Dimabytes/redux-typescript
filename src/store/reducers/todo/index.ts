@@ -1,6 +1,9 @@
 import {createSlice, Dispatch, PayloadAction} from '@reduxjs/toolkit';
 import Status from 'models/common/Status';
 import {Todo} from 'models/todo';
+import {getTodos} from 'services/todo';
+import {WithId} from 'models/common/serverArray';
+import {formatServerArray} from 'utils/services';
 import {initialState, TodoState} from './state';
 import {AppThunk, RootState} from '../..';
 
@@ -11,7 +14,7 @@ const contactsSlice = createSlice({
     startTodoFetching: state => {
       state.status = Status.Fetching;
     },
-    successTodoFetching: (state, action: PayloadAction<Todo[]>) => {
+    successTodoFetching: (state, action: PayloadAction<WithId<Todo>[]>) => {
       state.status = Status.Success;
       state.todos = action.payload;
     },
@@ -28,12 +31,7 @@ export function fetchTodos(): AppThunk {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(startTodoFetching());
-      const todos: Todo[] = [
-        {
-          message: '1234',
-          title: '1234'
-        }
-      ];
+      const todos = formatServerArray<Todo>(await getTodos());
       dispatch(successTodoFetching(todos));
     } catch (error) {
       dispatch(failureTodoFetching());
