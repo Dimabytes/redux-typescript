@@ -144,6 +144,15 @@
                 "import/prefer-default-export": "off",
                 "no-restricted-imports": "off"
             }
+        },
+      {
+        "files": [
+          "src/store/**/*.ts"
+        ],
+        "rules": {
+          "no-param-reassign": 0,
+          "import/no-cycle": 0
         }
+      }
     ]
 }
