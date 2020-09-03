@@ -1,6 +1,7 @@
 import React, {FC, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {todoSelector, fetchTodos} from 'store/reducers/todo';
+import {Grid, Box} from '@material-ui/core';
 import TodoItem from './TodoItem';
 
 const List: FC = () => {
@@ -11,11 +12,13 @@ const List: FC = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {todos.map(todo => (
-        <TodoItem todo={todo} key={todo.id} />
-      ))}
-    </div>
+    <Box p={5}>
+      <Grid spacing={2} container>
+        {todos.map(todo => (
+          <TodoItem todo={todo} key={todo.id} />
+        ))}
+      </Grid>
+    </Box>
   );
 };
 

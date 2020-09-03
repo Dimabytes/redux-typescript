@@ -31,9 +31,11 @@ export function fetchTodos(): AppThunk {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(startTodoFetching());
-      const todos = formatServerArray<Todo>(await getTodos());
+      const rawTodos = await getTodos();
+      const todos = formatServerArray<Todo>(rawTodos === null ? {} : rawTodos);
       dispatch(successTodoFetching(todos));
     } catch (error) {
+      console.log(error)
       dispatch(failureTodoFetching());
     }
   };

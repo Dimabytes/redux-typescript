@@ -1,4 +1,5 @@
 import {AnyObject} from 'models/common/AnyObject';
+import get from 'lodash/get';
 import {BaseServerArray, WithId} from '../../models/common/serverArray';
 
 export function buildUrl(url: string, params?: AnyObject): string {
@@ -22,7 +23,7 @@ export function handleResponse<T>(response: Response): Promise<T> {
       throw Error(response.statusText);
     }
     const json = JSON.parse(data);
-    if (json.errorDescription) {
+    if (get(json, 'errorDescription')) {
       throw Error(json.errorDescription);
     }
     return json;

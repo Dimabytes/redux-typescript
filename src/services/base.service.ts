@@ -50,11 +50,10 @@ export function basePut<T>(url: string, item: AnyObject): Promise<T> {
   return fetch(url, requestOptions).then(res => handleResponse<T>(res));
 }
 
-export function baseDelete<T>(url: string, id?: number): Promise<T> {
+export function baseDelete<T>(url: string): Promise<T> {
   const requestOptions = {
     ...getBaseRequestOptions(),
     method: 'DELETE'
   };
-  const fullURL = id ? `${url}/${id}` : url;
-  return fetch(fullURL, requestOptions).then(res => handleResponse<T>(res));
+  return fetch(url, requestOptions).then(res => handleResponse<T>(res));
 }
